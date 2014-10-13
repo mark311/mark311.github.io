@@ -2,7 +2,7 @@
 title: 光赢不输的程序猿
 email: markta31@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-学习是一场马拉松，不是百米冲刺
+  学习是一场马拉松，不是百米冲刺
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://mark311.github.io" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
