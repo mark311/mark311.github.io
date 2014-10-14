@@ -44,7 +44,7 @@ Lisp是LISt Processing的缩写，它是一门处理list的语言。
 
     (setq buffer-name 1)
     1
-    
+
     (buffer-name)
     "*scratch*"
 
@@ -155,11 +155,91 @@ let用来定义局部变量，变量的作用于仅限于let调用的body部分�
 
 ## if
 
-## save-excursion
+if的语法：
+
+{% highlight lisp %}
+(if true-or-false-test
+     action-to-carry-out-if-the-test-returns-true
+   action-to-carry-out-if-the-test-returns-false)
+{% endhighlight %}
+
+if的条件测试规则：`nil`为false，其余所有为true。
+
+`nil`和`()`是完全相同的东西。
+
+## car, cdr
+
+* `car` 返回list的第一个元素（等同与`first`函数）
+* `cdr` 返回list除第一个外的剩余元素（等同于`rest`函数）
+
+{% highlight lisp %}
+(car '(rose violet daisy buttercup))
+rose
+
+(cdr '(rose violet daisy buttercup))
+(violet daisy buttercup)
+
+(first '(rose violet daisy buttercup))
+rose
+
+(rest '(rose violet daisy buttercup))
+(violet daisy buttercup)
+{% endhighlight %}
+
+学习car和cdr的目的是能够读懂先前的代码，但是自己在写代码的时候应当使用first和rest。
+
+car和cdr都是非破坏性的，他们不会改变list的结构，只是返回其中的部分元素。
+
+## cons
+
+`cons`把一个元素和一个list拼接成一个新的list：
+{% highlight lisp %}
+(cons 'pine '())
+(pine)
+
+(cons 'pine '(fir oak maple))
+(pine fir oak maple)
+
+(cons '(pine fir) '(oak maple))
+((pine fir) oak maple)
+{% endhighlight %}
+
+cons不改变原来的list，而是创建一个新的list。
+
+## length
+
+计算list的长度：
+{% highlight lisp %}
+(length '(pine fir oak maple))
+4
+{% endhighlight %}
+
+## List的实现
+
+List的实现是一个**单项链表**。
+
+这里定义了一个名为bouquet的list，其中包括三个元素：
+
+{% highlight lisp %}
+(setq bouquet '(rose violet buttercup))
+{% endhighlight %}
+
+把它表示成链表的形式，如下图所示：
+
+     bouquet
+      |
+      |    --------------       ---------------       ----------------
+      |   | car   | cdr  |     | car    | cdr  |     | car     | cdr  |
+       -->| rose  |   o------->| violet |   o------->| butter- |  nil |
+          |       |      |     |        |      |     | cup     |      |
+           --------------       ---------------       ----------------
+
 
 ## Review
 
 [总结了一些基本的函数用法](http://www.gnu.org/software/emacs/manual/html_node/eintr/Review.html#Review)
+
+
 
 
 ## References
@@ -167,4 +247,3 @@ let用来定义局部变量，变量的作用于仅限于let调用的body部分�
 [An Introduction to Programming in Emacs Lisp](http://www.gnu.org/software/emacs/manual/html_node/eintr/index.html)
 
 [Emacs Lisp Reference Manual](http://www.gnu.org/software/emacs/manual/html_node/elisp/index.html)
-
