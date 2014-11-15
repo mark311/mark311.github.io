@@ -75,7 +75,7 @@ AC自动机是一种高效的多模式匹配算法，但是它不适合我们。
 
 下面图表中的红线代表循环匹配的算法的执行时间，绿线代表基于DFA匹配的算法的执行时间，横轴是模式组的数量。
 
-![ARN match](/images/dfa-performance.png "ARN的匹配所搜图示" =50x50)
+![ARN match](/images/dfa-performance.png)
 
 ## 峰回路转：PCRE callout
 
